@@ -29,6 +29,7 @@ Los contenidos de esta evaluación corresponden a los temas:
 
 -   Análisis espacial
 
+HOLA YA PUDE!!!!1
 
 Ustedes estan utilizando un archivo tipo R Markdown (`.Rmd`). Las instruciones son **[1 PUNTO]**:
 
