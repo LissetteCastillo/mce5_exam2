@@ -29,13 +29,9 @@ Los contenidos de esta evaluación corresponden a los temas:
 
 -   Análisis espacial
 
-HOLA YA PUDE!!!!1
+
 
 Ustedes estan utilizando un archivo tipo R Markdown (`.Rmd`). Las instruciones son **[1 PUNTO]**:
-
--   Bifurquen el repositorio en GitHub y clonen en su computador usando un proyecto con control de la versión de RStudio.
-
--   Arriba, donde dice "author", deben llenar sus nombres.
 
 -   **Todo resultado debe ir con su explicación y/o discusión, caso contrario no se calificará.**
 
@@ -46,6 +42,8 @@ Ustedes estan utilizando un archivo tipo R Markdown (`.Rmd`). Las instruciones s
 -   **Cada pregunta debe tener al menos un cntrol de la versión**.
 
 -   Su entrega consiste en colocar el **enlace de GitHub** en la actividad "ExamenFinal".
+
+
 
 ## **PREGUNTA 1: GLM, GAM y Regresión Bayesiana [3 PUNTOS]**
 
@@ -60,6 +58,22 @@ En el archivo `"glm.xlsx"` tiene tres datos:
 Realice los siguientes análisis: 
 
 - aedes: GLM Poisson
+
+
+```{r}
+library(stats)
+library(readr)
+library(dplyr)
+aedes <- read_excel("~/aedes.xlsx")
+str(aedes)
+summary(aedes)
+
+
+
+
+
+
+
 
 - disease: GLMs binomiales
 
