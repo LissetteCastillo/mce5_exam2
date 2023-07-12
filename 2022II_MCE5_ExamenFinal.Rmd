@@ -87,11 +87,11 @@ glm_aedes <- glm(aedes ~ repetition, family = poisson(link = "log"), data = data
 summary(glm_aedes)
 ```
 
-#Interpretacion de Resultados (REGRESION) 
+5. Interpretacion de Resultados (REGRESION) 
 
 El coeficiente estimado para repetition es de 0.026590. Esto indica que, en promedio, por cada repetición de la aplicación del insecticida, se espera un aumento del 2.66% en el número de mosquitos Aedes vivos, manteniendo constantes las demás variables en el modelo.
 Ademas presenta una signficancia en sus valores, tanto el coeficiente para el intercepto (Intercept) como para repetition son altamente significativos, con valores de p muy cercanos a cero (p < 0.001). Esto sugiere que tanto el intercepto como la variable repetition tienen un efecto significativo en la cantidad de mosquitos Aedes que sobrevivene a estos eventos.
-
+ Sí, existe una significancia en la presencia de mosquitos en temporadas en los que les hechan insecticidas.  
 
 - disease: GLMs binomiales
 
