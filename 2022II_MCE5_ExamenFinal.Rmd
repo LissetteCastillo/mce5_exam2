@@ -76,21 +76,28 @@ summary(data_aedes$aedes)
 
 La aplicación repetida de insecticidas en un experimento tiene un efecto considerable en la reducción de la población de mosquitos vivos(Aedes).
 
-3. Análisis de regresión  
+3. Planteamiento del problema
+
+El objetivo del estudio es evaluar el impacto de la aplicación repetida de insecticidas en la reducción del número de mosquitos vivos (Aedes) en un área específica. Se plantea la siguiente pregunta de investigación: ¿Existe una disminución significativa en la cantidad de mosquitos vivos (Aedes) después de cada aplicación de insecticidas en comparación con un grupo de control no tratado?
+
+4. Análisis de regresión  
 
 ```{r}
 glm_aedes <- glm(aedes ~ repetition, family = poisson(link = "log"), data = data_aedes)
 summary(glm_aedes)
 ```
 
+#Interpretacion de Resultados (REGRESION) 
 
-
-
-
-
+El coeficiente estimado para repetition es de 0.026590. Esto indica que, en promedio, por cada repetición de la aplicación del insecticida, se espera un aumento del 2.66% en el número de mosquitos Aedes vivos, manteniendo constantes las demás variables en el modelo.
+Ademas presenta una signficancia en sus valores, tanto el coeficiente para el intercepto (Intercept) como para repetition son altamente significativos, con valores de p muy cercanos a cero (p < 0.001). Esto sugiere que tanto el intercepto como la variable repetition tienen un efecto significativo en la cantidad de mosquitos Aedes que sobrevivene a estos eventos.
 
 
 - disease: GLMs binomiales
+
+data_aedes <- read_excel("glm.xlsx", sheet = "aedes")
+summary(data_aedes$aedes) 
+
 
 - leishmania: glm bayesiano
 
