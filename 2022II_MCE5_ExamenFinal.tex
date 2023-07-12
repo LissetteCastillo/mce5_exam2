@@ -1,0 +1,452 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Métodos Cuantitativos en Ecología - MCE5},
+  pdfauthor={Lissette Castillo},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Métodos Cuantitativos en Ecología - MCE5}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{EXAMEN FINAL - 2022II}
+\author{Lissette Castillo}
+\date{2023-07-11}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{4}
+\tableofcontents
+}
+Los contenidos de esta evaluación corresponden a los temas:
+
+\begin{itemize}
+\item
+  GLM y GAM
+\item
+  Introducción a estadística Bayesiana
+\item
+  Series de tiempo
+\item
+  Análisis espacial
+\end{itemize}
+
+Ustedes estan utilizando un archivo tipo R Markdown (\texttt{.Rmd}). Las
+instruciones son \textbf{{[}1 PUNTO{]}}:
+
+\begin{itemize}
+\item
+  \textbf{Todo resultado debe ir con su explicación y/o discusión, caso
+  contrario no se calificará.}
+\item
+  \textbf{NO IMPRIMA los datos o tablas completas}, reporte únicamente
+  figuras o tablas resumen. Si tiene varias figuras use la función
+  \texttt{ggarrange} de la librería \texttt{ggpubr}.
+\item
+  Al final de este examen deben utilizar el comando ``Knit'' para
+  generar un archivo HTML.
+\item
+  \textbf{Cada pregunta debe tener al menos un cntrol de la versión}.
+\item
+  Su entrega consiste en colocar el \textbf{enlace de GitHub} en la
+  actividad ``ExamenFinal''.
+\end{itemize}
+
+\hypertarget{pregunta-1-glm-gam-y-regresiuxf3n-bayesiana-3-puntos}{%
+\subsection{\texorpdfstring{\textbf{PREGUNTA 1: GLM, GAM y Regresión
+Bayesiana {[}3
+PUNTOS{]}}}{PREGUNTA 1: GLM, GAM y Regresión Bayesiana {[}3 PUNTOS{]}}}\label{pregunta-1-glm-gam-y-regresiuxf3n-bayesiana-3-puntos}}
+
+En el archivo \texttt{"glm.xlsx"} tiene tres datos:
+
+\begin{itemize}
+\item
+  aedes: insecticidas utilizados para controlar el número de mosquitos
+  en un experimento. Cada vez que se repite la aplicación del
+  insecticida parece disminuir la cantidad de zancudos vivos.
+\item
+  leishmania: en una infección con leishmania cuando se analiza el
+  tejido qué sucede con la concentración de algunas células y si están o
+  no afectadas.
+\item
+  disease: cómo la edad afecta a diferentes características dicotómicas.
+\end{itemize}
+
+Realice los siguientes análisis:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Análisis exploratorio\_aedes
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  aedes: GLM Poisson
+\end{itemize}
+
+\#Librerias necesarias para data\_aedes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stats)}
+\FunctionTok{library}\NormalTok{(graphics)}
+\FunctionTok{library}\NormalTok{(MASS)}
+\FunctionTok{library}\NormalTok{(readxl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'readxl' was built under R version 4.3.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_aedes }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"glm.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \StringTok{"aedes"}\NormalTok{)}
+\FunctionTok{summary}\NormalTok{(data\_aedes}\SpecialCharTok{$}\NormalTok{aedes) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    44.0   136.5   523.5   865.4  1217.8  3020.0
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Planteamiento de hipótesis.
+\end{enumerate}
+
+La aplicación repetida de insecticidas en un experimento tiene un efecto
+considerable en la reducción de la población de mosquitos vivos(Aedes).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Planteamiento del problema
+\end{enumerate}
+
+El objetivo del estudio es evaluar el impacto de la aplicación repetida
+de insecticidas en la reducción del número de mosquitos vivos (Aedes) en
+un área específica. Se plantea la siguiente pregunta de investigación:
+¿Existe una disminución significativa en la cantidad de mosquitos vivos
+(Aedes) después de cada aplicación de insecticidas en comparación con un
+grupo de control no tratado?
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Análisis de regresión
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{glm\_aedes }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(aedes }\SpecialCharTok{\textasciitilde{}}\NormalTok{ repetition, }\AttributeTok{family =} \FunctionTok{poisson}\NormalTok{(}\AttributeTok{link =} \StringTok{"log"}\NormalTok{), }\AttributeTok{data =}\NormalTok{ data\_aedes)}
+\FunctionTok{summary}\NormalTok{(glm\_aedes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = aedes ~ repetition, family = poisson(link = "log"), 
+##     data = data_aedes)
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) 6.669058   0.014414 462.677  < 2e-16 ***
+## repetition  0.026590   0.003636   7.312 2.63e-13 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 26631  on 29  degrees of freedom
+## Residual deviance: 26577  on 28  degrees of freedom
+## AIC: 26819
+## 
+## Number of Fisher Scoring iterations: 5
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Interpretacion de Resultados (REGRESION)
+\end{enumerate}
+
+El coeficiente estimado para repetition es de 0.026590. Esto indica que,
+en promedio, por cada repetición de la aplicación del insecticida, se
+espera un aumento del 2.66\% en el número de mosquitos Aedes vivos,
+manteniendo constantes las demás variables en el modelo. Ademas presenta
+una signficancia en sus valores, tanto el coeficiente para el intercepto
+(Intercept) como para repetition son altamente significativos, con
+valores de p muy cercanos a cero (p \textless{} 0.001). Esto sugiere que
+tanto el intercepto como la variable repetition tienen un efecto
+significativo en la cantidad de mosquitos Aedes que sobrevivene a estos
+eventos. Sí, existe una significancia en la presencia de mosquitos en
+temporadas en los que les hechan insecticidas.
+
+\begin{itemize}
+\tightlist
+\item
+  disease: GLMs binomiales
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(forecast)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'forecast' was built under R version 4.3.1
+\end{verbatim}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'quantmod':
+##   method            from
+##   as.zoo.data.frame zoo
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.3.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#cargar datos}
+\NormalTok{data\_quakes }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"ts.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \StringTok{"quakes"}\NormalTok{)}
+\NormalTok{quakes }\OtherTok{\textless{}{-}}\NormalTok{ data\_quakes}\SpecialCharTok{$}\NormalTok{quakes}
+\NormalTok{ts\_quakes }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(data\_quakes, }\AttributeTok{start =} \FunctionTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{frequency =} \DecValTok{1}\NormalTok{)}
+\CommentTok{\#autocorrelacion }
+\FunctionTok{acf}\NormalTok{(ts\_quakes, }\AttributeTok{main =} \StringTok{"Autocorrelation of quakes"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{2022II_MCE5_ExamenFinal_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\#Analisis datos autocorrelacion Estos datos se ven representados por
+terremotos que han ocurrido entre los años (1916-2015) la muestra ACF se
+ve representada por los coeficientes de autocorrelación para diferentes
+retrasos (lags) en el rango establecido.Para las siguientes graficas la
+primera barra corresponde a la autocorrelación con la misma observación
+es decir que para el primer rezago el valor de 0 es decir que estos
+datos estarán correlacionados consigo mismos por lo que el valor de r
+sera 1, en el rezago 0 al 15 tenemos una correlación negativa, es decir
+que estos datos están correlacionados con el pasado. Por lo tanto
+tendremos que las barras 2 y 5 son significativas.
+
+\begin{itemize}
+\tightlist
+\item
+  leishmania: glm bayesiano
+\end{itemize}
+
+Realizar los siguientes análisis y respectivas interpretaciones:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Análisis exploratorio.
+\item
+  Planteamiento de hipótesis.
+\item
+  Análisis de regresión
+\item
+  Planteamiento del modelo.
+\item
+  Validez del modelo.
+\end{enumerate}
+
+\hypertarget{pregunta-2-series-de-tiempo-3-puntos}{%
+\subsection{\texorpdfstring{\textbf{PREGUNTA 2: Series de tiempo {[}3
+PUNTOS{]}}}{PREGUNTA 2: Series de tiempo {[}3 PUNTOS{]}}}\label{pregunta-2-series-de-tiempo-3-puntos}}
+
+En el archivo \texttt{"ts.xlsx"} tiene tres datos:
+
+\begin{itemize}
+\item
+  quakes: cantidad de eventos de terremotos por cada año.
+\item
+  hepatitis: casos de hepatitis por mes entre 2010 y 2017 (acomodar la
+  tabla si es necesario)
+\item
+  wildfire: cantidad de eventos de incendios forestales por mes entre
+  2003 y 2017.
+\end{itemize}
+
+Realizar los siguientes análisis y respectivas interpretaciones:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Análisis exploratorio: autocorrelación y descomposición, análisis
+  estacional.
+\item
+  ARIMA, SARIMA, ETS, NNAR
+\item
+  Validez de los modelos.
+\item
+  Predicción a 20 años o a 24 meses según corresponda.
+\end{enumerate}
+
+\hypertarget{pregunta-3-anuxe1lisis-espacial-de-especies-3-puntos}{%
+\subsection{\texorpdfstring{\textbf{PREGUNTA 3: Análisis espacial de
+especies {[}3
+PUNTOS{]}}}{PREGUNTA 3: Análisis espacial de especies {[}3 PUNTOS{]}}}\label{pregunta-3-anuxe1lisis-espacial-de-especies-3-puntos}}
+
+Seleccione una especie de planta y una especie de animal; asimismo, dos
+tipos de modelos de predicción (glm, gam, rf, ann, otro):
+
+\begin{itemize}
+\item
+  Mosquito: \emph{Aedes aegypti}
+\item
+  Puma: \emph{Puma concolor}
+\item
+  Coati: \emph{Nasua nasua}
+\item
+  Tapir: \emph{Tapirus terrestris}
+\item
+  Jaguar: \emph{Panthera onca}
+\item
+  Palma de cera: \emph{Ceroxylon quindiuense}
+\item
+  Ceibo: \emph{Ceiba pentandra}
+\item
+  Pasiflora: \emph{Passiflora edulis}
+\item
+  Chirimoya: \emph{Anona cherimola}
+\end{itemize}
+
+Luego realice un análisis espacial de distribución de la especie en
+Ecuador continental en base a los datos de presencia del GBIF (use rgbif
+para descargar la data). Explique el resultado y compare la diferencia
+entre la salida de los dos modelos. En qué regiones los modelos difieren
+más en la predicción?
+
+\end{document}

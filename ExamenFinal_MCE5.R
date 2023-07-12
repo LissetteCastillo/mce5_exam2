@@ -1,0 +1,6 @@
+library(stats)
+library(graphics)
+library(MASS)
+library(readxl)
+data_aedes <- read_excel("glm.xlsx", sheet = "aedes")
+summary(data_aedes$aedes) 

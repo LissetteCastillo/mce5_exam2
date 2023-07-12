@@ -6,6 +6,8 @@ Los contenidos de esta evaluación corresponden a los temas:
 
 -   Introducción a estadística Bayesiana
 
+
+c002c90..1fb9f43  HEAD -> main
 -   Series de tiempo
 
 -   Análisis espacial

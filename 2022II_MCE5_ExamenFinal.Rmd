@@ -108,7 +108,7 @@ library(ggplot2)
 #cargar datos
 data_quakes <- read_excel("ts.xlsx", sheet = "quakes")
 quakes <- data_quakes$quakes
-ts_quakes <- ts(data_quakes, start = c(2000, 1), frequency = 1)
+ts_quakes <- ts(data_quakes, start = c(3000, 1), frequency = 1)
 #autocorrelacion 
 acf(ts_quakes, main = "Autocorrelation of quakes")
 ```
