@@ -1,7 +1,6 @@
 ---
 title: "Métodos Cuantitativos en Ecología - MCE5"
-subtitle: "EXAMEN FINAL - 2022II"
-author: 'Lissette Castillo'
+author: "Lissette Castillo"
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -12,6 +11,13 @@ output:
     toc_float:
       collapsed: no
       smooth_scroll: yes
+  word_document:
+    toc: yes
+    toc_depth: '4'
+  pdf_document:
+    toc: yes
+    toc_depth: '4'
+subtitle: "EXAMEN FINAL - 2022II"
 ---
 
 ```{r echo = FALSE, results = 'asis'}
@@ -95,8 +101,21 @@ Ademas presenta una signficancia en sus valores, tanto el coeficiente para el in
 
 - disease: GLMs binomiales
 
-data_aedes <- read_excel("glm.xlsx", sheet = "aedes")
-summary(data_aedes$aedes) 
+```{r}
+library(readxl)
+library(forecast)
+library(ggplot2)
+#cargar datos
+data_quakes <- read_excel("ts.xlsx", sheet = "quakes")
+quakes <- data_quakes$quakes
+ts_quakes <- ts(data_quakes, start = c(2000, 1), frequency = 1)
+#autocorrelacion 
+acf(ts_quakes, main = "Autocorrelation of quakes")
+```
+
+#Analisis datos autocorrelacion 
+Estos datos se ven representados por terremotos que han ocurrido entre los años (1916-2015) la muestra ACF se ve representada por los coeficientes de autocorrelación para diferentes retrasos (lags) en el rango establecido.Para las siguientes graficas la primera barra corresponde a la autocorrelación con la misma observación es decir que para el primer rezago el valor de 0 es decir que estos datos estarán correlacionados consigo mismos por lo que el valor de r sera 1, en el rezago 0 al 15  tenemos una correlación negativa, es decir que estos datos están correlacionados con el pasado. Por lo tanto tendremos que las barras 2 y 5 son significativas. 
+
 
 
 - leishmania: glm bayesiano
