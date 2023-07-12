@@ -1313,6 +1313,106 @@ ul.task-list{list-style: none;}
 
 
 
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+background-color: #2a211c;
+color: #bdae9d;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #bdae9d; padding-left: 4px; }
+div.sourceCode
+{ color: #bdae9d; background-color: #2a211c; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ffff00; } 
+code span.an { color: #0066ff; font-weight: bold; font-style: italic; } 
+code span.at { } 
+code span.bn { color: #44aa43; } 
+code span.bu { } 
+code span.cf { color: #43a8ed; font-weight: bold; } 
+code span.ch { color: #049b0a; } 
+code span.cn { } 
+code span.co { color: #0066ff; font-weight: bold; font-style: italic; } 
+code span.do { color: #0066ff; font-style: italic; } 
+code span.dt { text-decoration: underline; } 
+code span.dv { color: #44aa43; } 
+code span.er { color: #ffff00; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #44aa43; } 
+code span.fu { color: #ff9358; font-weight: bold; } 
+code span.im { } 
+code span.in { color: #0066ff; font-weight: bold; font-style: italic; } 
+code span.kw { color: #43a8ed; font-weight: bold; } 
+code span.op { } 
+code span.pp { font-weight: bold; } 
+code span.sc { color: #049b0a; } 
+code span.ss { color: #049b0a; } 
+code span.st { color: #049b0a; } 
+code span.va { } 
+code span.vs { color: #049b0a; } 
+code span.wa { color: #ffff00; font-weight: bold; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -1531,10 +1631,78 @@ no afectadas.</p></li>
 dicotómicas.</p></li>
 </ul>
 <p>Realice los siguientes análisis:</p>
+<ol style="list-style-type: decimal">
+<li>Análisis exploratorio_aedes</li>
+</ol>
 <ul>
-<li><p>aedes: GLM Poisson</p></li>
-<li><p>disease: GLMs binomiales</p></li>
-<li><p>leishmania: glm bayesiano</p></li>
+<li>aedes: GLM Poisson</li>
+</ul>
+<p>#Librerias necesarias para data_aedes</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(graphics)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
+<pre><code>## Warning: package &#39;readxl&#39; was built under R version 4.3.1</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>data_aedes <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;glm.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;aedes&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">summary</span>(data_aedes<span class="sc">$</span>aedes) </span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    44.0   136.5   523.5   865.4  1217.8  3020.0</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Planteamiento de hipótesis.</li>
+</ol>
+<p>La aplicación repetida de insecticidas en un experimento tiene un
+efecto considerable en la reducción de la población de mosquitos
+vivos(Aedes).</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Planteamiento del problema</li>
+</ol>
+<p>El objetivo del estudio es evaluar el impacto de la aplicación
+repetida de insecticidas en la reducción del número de mosquitos vivos
+(Aedes) en un área específica. Se plantea la siguiente pregunta de
+investigación: ¿Existe una disminución significativa en la cantidad de
+mosquitos vivos (Aedes) después de cada aplicación de insecticidas en
+comparación con un grupo de control no tratado?</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Análisis de regresión</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>glm_aedes <span class="ot">&lt;-</span> <span class="fu">glm</span>(aedes <span class="sc">~</span> repetition, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">data =</span> data_aedes)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">summary</span>(glm_aedes)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = aedes ~ repetition, family = poisson(link = &quot;log&quot;), 
+##     data = data_aedes)
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) 6.669058   0.014414 462.677  &lt; 2e-16 ***
+## repetition  0.026590   0.003636   7.312 2.63e-13 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 26631  on 29  degrees of freedom
+## Residual deviance: 26577  on 28  degrees of freedom
+## AIC: 26819
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<p>#Interpretacion de Resultados (REGRESION)</p>
+<p>El coeficiente estimado para repetition es de 0.026590. Esto indica
+que, en promedio, por cada repetición de la aplicación del insecticida,
+se espera un aumento del 2.66% en el número de mosquitos Aedes vivos,
+manteniendo constantes las demás variables en el modelo. Ademas presenta
+una signficancia en sus valores, tanto el coeficiente para el intercepto
+(Intercept) como para repetition son altamente significativos, con
+valores de p muy cercanos a cero (p &lt; 0.001). Esto sugiere que tanto
+el intercepto como la variable repetition tienen un efecto significativo
+en la cantidad de mosquitos Aedes que sobrevivene a estos eventos.</p>
+<ul>
+<li>disease: GLMs binomiales</li>
+</ul>
+<p>data_aedes &lt;- read_excel(“glm.xlsx”, sheet = “aedes”)
+summary(data_aedes$aedes)</p>
+<ul>
+<li>leishmania: glm bayesiano</li>
 </ul>
 <p>Realizar los siguientes análisis y respectivas interpretaciones:</p>
 <ol style="list-style-type: decimal">

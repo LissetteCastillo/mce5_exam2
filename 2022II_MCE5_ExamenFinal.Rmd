@@ -57,16 +57,31 @@ En el archivo `"glm.xlsx"` tiene tres datos:
 
 Realice los siguientes análisis: 
 
+1. Análisis exploratorio_aedes
+
 - aedes: GLM Poisson
 
+#Librerias necesarias para data_aedes
 
 ```{r}
 library(stats)
-library(readr)
-library(dplyr)
-aedes <- read_excel("~/aedes.xlsx")
-str(aedes)
-summary(aedes)
+library(graphics)
+library(MASS)
+library(readxl)
+data_aedes <- read_excel("glm.xlsx", sheet = "aedes")
+summary(data_aedes$aedes) 
+
+```
+2. Planteamiento de hipótesis.
+
+La aplicación repetida de insecticidas en un experimento tiene un efecto considerable en la reducción de la población de mosquitos vivos(Aedes).
+
+3. Análisis de regresión  
+
+```{r}
+glm_aedes <- glm(aedes ~ repetition, family = poisson(link = "log"), data = data_aedes)
+summary(glm_aedes)
+```
 
 
 
